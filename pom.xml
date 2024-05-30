@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
-  <artifactId>EcomerceJuss</artifactId>
+  <artifactId>EcomerceJeeJuss</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>EcomerceJeeFerAn</name>
+  <name>EcomerceJeeJuss</name>
   <packaging>war</packaging>
 
   <properties>
