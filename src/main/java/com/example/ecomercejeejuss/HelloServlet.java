@@ -1,4 +1,4 @@
-package com.example.ecomercejeeferan;
+package com.example.ecomercejeejuss;
 
 import java.io.*;
 import jakarta.servlet.http.*;

@@ -1,4 +1,6 @@
-<%--     Document   : index
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="javaBeans.Categoria" %>
+<%@ page import="cad.CategoriaCad" %><%--     Document   : index
     Created on : 12-Febrero-2018, 10:24:59
     Author     : Christian Camilo Gámez
 --%>
@@ -220,12 +222,14 @@
 					<div class="left-sidebar">
 						<h2>Categorías</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+							<%! ArrayList<Categoria> lista = CategoriaCad.listar(); %>
+							<% for(int i = 0; lista.size() > i; i++){ %>
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
 										<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
 											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
-											Ropa deportiva
+											<%= lista.get(i).getNombre() %>
 										</a>
 									</h4>
 								</div>
@@ -241,6 +245,7 @@
 									</div>
 								</div>
 							</div>
+							<% } %>
 						</div><!--/category-products-->
 					
 						<div class="brands_products"><!--brands_products-->
