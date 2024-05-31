@@ -29,4 +29,24 @@ public class CategoriaCad {
             return null;
         }
     }
+
+    public static ArrayList<Categoria> listarSubCategorias(int catSuperior){
+        try {
+            String sql = "{call sp_listarSubCategoria(?)}";
+            Connection c = Conexion.conectar();
+            CallableStatement sentencia = (CallableStatement) c.prepareCall(sql);
+            sentencia.setInt(1, catSuperior);
+            ResultSet resultado = sentencia.executeQuery();
+            ArrayList<Categoria> lista = new ArrayList<>();
+            while (resultado.next()){
+                Categoria cat =  new Categoria();
+                cat.setCodigo(resultado.getInt("codigo"));
+                cat.setNombre(resultado.getString("nombre"));
+                lista.add(cat);
+            }
+            return lista;
+        } catch (SQLException ex) {
+            return null;
+        }
+    }
 }
