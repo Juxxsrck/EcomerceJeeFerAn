@@ -233,8 +233,8 @@
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#<%= codigo %>">
-											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+										<a <% if(CategoriaCad.esSuperior(codigo)) {%> data-toggle="collapse" data-parent="#accordian" <% } %> href="#<%= codigo %>">
+											<% if(CategoriaCad.esSuperior(codigo)) {%><span class="badge pull-right"><i class="fa fa-plus"></i></span><% } %>
 											<%= lista.get(i).getNombre() %>
 										</a>
 									</h4>
