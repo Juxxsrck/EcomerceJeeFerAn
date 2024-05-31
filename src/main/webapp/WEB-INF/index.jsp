@@ -222,30 +222,42 @@
 					<div class="left-sidebar">
 						<h2>Categorías</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<%! ArrayList<Categoria> lista = CategoriaCad.listar(); %>
-							<% for(int i = 0; lista.size() > i; i++){ %>
+							<%!
+                                ArrayList<Categoria> lista = CategoriaCad.listar();
+                                int codigo = 0;
+                                %>
+							<%
+                                for(int i = 0; lista.size() > i; i++){
+                                    codigo =  lista.get(i).getCodigo();
+                                    %>
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#<%= lista.get(i).getCodigo() %>">
+										<a data-toggle="collapse" data-parent="#accordian" href="#<%= codigo %>">
 											<span class="badge pull-right"><i class="fa fa-plus"></i></span>
 											<%= lista.get(i).getNombre() %>
 										</a>
 									</h4>
 								</div>
-								<div id="<%= lista.get(i).getCodigo() %>" class="panel-collapse collapse">
+								<div id="<%= codigo %>" class="panel-collapse collapse">
 									<div class="panel-body">
-										<ul>
-											<li><a href="#">Nike </a></li>
-											<li><a href="#">Under Armour </a></li>
-											<li><a href="#">Adidas </a></li>
-											<li><a href="#">Puma</a></li>
-											<li><a href="#">ASICS </a></li>
-										</ul>
+                                        <ul>
+                                        <% ArrayList<Categoria> listaSub = CategoriaCad.listarSubCategorias(codigo); %>
+                                        <%
+                                            for(int isub = 0; listaSub.size() > isub; isub++) {
+                                                codigo =  listaSub.get(isub).getCodigo();
+                                        %>
+											<li><a href="#"><%= listaSub.get(isub).getNombre() %> </a></li>
+                                        <%
+                                            }
+                                        %>
+                                        </ul>
 									</div>
 								</div>
 							</div>
-							<% } %>
+							<%
+                                }
+                                %>
 						</div><!--/category-products-->
 					
 						<div class="brands_products"><!--brands_products-->
